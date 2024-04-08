@@ -14,7 +14,7 @@ jobs:
       - name: Pack & upload artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: github-page
+          name: github-pages
           path: |
             assets/*
             index.html

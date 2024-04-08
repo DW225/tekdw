@@ -3,6 +3,7 @@
     "esbenp.prettier-vscode",
     "davidanson.vscode-markdownlint",
     "streetsidesoftware.code-spell-checker",
-    "msjsdiag.debugger-for-chrome"
+    "ms-vscode.js-debug",
+    "github.vscode-github-actions"
   ]
 }
