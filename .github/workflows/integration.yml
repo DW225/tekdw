@@ -6,6 +6,20 @@ on:
       - master
 
 jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Pack & upload artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: github-page
+          path: |
+            assets/*
+            index.html
+            .htaccess
+
   deploy:
     name: deploy personal page github page
     runs-on: ubuntu-latest
@@ -14,14 +28,13 @@ jobs:
       pages: write      # to deploy to Pages
       id-token: write   # to verify the deployment originates from an appropriate source
 
+    needs:
+      - build
     # Deploy to the github-pages environment
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
